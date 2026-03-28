@@ -1,0 +1,291 @@
+/* ==============================
+   Sidebar - Premium Dark Theme
+   ============================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+/* Decorative gradient accent on right edge */
+.sidebar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(30, 136, 229, 0.3), transparent);
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed-width);
+}
+
+/* ---- Brand / Logo ---- */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 16px;
+    height: var(--header-height);
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle glow behind brand */
+.brand::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(30, 136, 229, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.brandIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(30, 136, 229, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.brandText {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeSlideIn 0.2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.brandName {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    background: linear-gradient(90deg, #fff 60%, #64B5F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.brandBadge {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #F57C00;
+    background: rgba(245, 124, 0, 0.12);
+    border: 1px solid rgba(245, 124, 0, 0.2);
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-top: 3px;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+/* ---- Section Label ---- */
+.sectionLabel {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: rgba(255, 255, 255, 0.2);
+    padding: 18px 20px 6px;
+    white-space: nowrap;
+}
+
+/* ---- Nav ---- */
+.nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #1e293b transparent;
+}
+
+.menuList {
+    list-style: none;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.menuItem {
+    position: relative;
+}
+
+.menuLink {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.menuLink:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.menuLink:hover .menuIcon {
+    transform: scale(1.15);
+}
+
+/* Active state */
+.menuLink.active {
+    background: linear-gradient(135deg, rgba(30, 136, 229, 0.22) 0%, rgba(21, 101, 192, 0.14) 100%);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.menuLink.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 3px;
+    border-radius: 0 4px 4px 0;
+    background: linear-gradient(to bottom, #1E88E5, #64B5F6);
+    box-shadow: 0 0 10px rgba(30, 136, 229, 0.6);
+}
+
+.menuLink.active .menuIcon {
+    color: #64B5F6;
+}
+
+.menuIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.menuLabel {
+    flex: 1;
+    animation: fadeSlideIn 0.15s ease;
+}
+
+/* ---- Divider ---- */
+.menuDivider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 8px 16px;
+}
+
+/* ---- Collapse Button ---- */
+.collapseBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12.5px;
+    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.collapseBtn:hover {
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* ---- Collapsed Mode ---- */
+.sidebar.collapsed .menuLink {
+    justify-content: center;
+    gap: 0;
+    padding: 11px;
+}
+
+.sidebar.collapsed .menuLink.active::before {
+    left: 0;
+    top: 15%;
+    bottom: 15%;
+    width: 3px;
+}
+
+.sidebar.collapsed .sectionLabel {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.sidebar.collapsed .collapseBtn {
+    justify-content: center;
+    padding: 14px;
+}
+
+/* Tooltip on collapsed hover */
+.sidebar.collapsed .menuLink:hover::after {
+    content: attr(title);
+    position: fixed;
+    left: calc(var(--sidebar-collapsed-width) + 10px);
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    white-space: nowrap;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    font-weight: 500;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

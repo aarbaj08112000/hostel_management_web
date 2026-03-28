@@ -1,0 +1,194 @@
+.receiptContainer {
+    padding: 60px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.backLink:hover {
+    color: #1e88e5;
+}
+
+.printBtn {
+    background: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.receiptCard {
+    background: white;
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border: 1px solid #e2e8f0;
+}
+
+.brandInfo {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 30px;
+}
+
+.brandName {
+    font-size: 24px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -1px;
+}
+
+.brandSub {
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+.receiptTitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.receiptTitle h1 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #1e293b;
+}
+
+.receiptTitle p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.infoBlock h4 {
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.infoBlock p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.amountSection {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.amountLabel {
+    font-size: 14px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.amountValue {
+    font-size: 36px;
+    font-weight: 900;
+    color: #1e88e5;
+}
+
+.detailsTable {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.detailRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.detailRow:last-child {
+    border-bottom: none;
+}
+
+.detailLabel {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.detailValue {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 14px;
+}
+
+.footer {
+    text-align: center;
+    border-top: 2px solid #f1f5f9;
+    padding-top: 30px;
+    margin-top: 20px;
+}
+
+.statusWatermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 120px;
+    font-weight: 900;
+    opacity: 0.03;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+@media print {
+    .receiptContainer {
+        padding: 0;
+        background: white;
+    }
+
+    .header {
+        display: none;
+    }
+
+    .receiptCard {
+        border: none;
+        box-shadow: none;
+        padding: 20px;
+    }
+}

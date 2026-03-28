@@ -1,0 +1,144 @@
+.container {
+    /* padding: 24px; */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #475569;
+    margin-top: 4px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.categoryCard {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.categoryCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+.categoryHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.iconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoryTitle {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.reportList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.reportItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.reportItem:hover {
+    background: white;
+    border-color: #e2e8f0;
+    transform: translateX(4px);
+}
+
+.reportInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.reportName {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.reportDesc {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.arrowIcon {
+    color: #94a3b8;
+    transition: all 0.2s;
+}
+
+.reportItem:hover .arrowIcon {
+    color: #1e88e5;
+    transform: translateX(2px);
+}
+
+/* Colors */
+.finance {
+    background: #eff6ff;
+    color: #1e88e5;
+}
+
+.ops {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.residents {
+    background: #f0fdf4;
+    color: #10b981;
+}
+
+.analytis {
+    background: #faf5ff;
+    color: #8b5cf6;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
