@@ -48,7 +48,7 @@ export default function LoginPage() {
         if (error) setError('');
     };
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         // Basic Validation
@@ -57,16 +57,13 @@ export default function LoginPage() {
             return;
         }
 
-        if (formData.password.length < 6) {
-            setError('Password must be at least 6 characters.');
-            return;
-        }
-
         setLoading(true);
         setError('');
 
-        // Simulate API verification
-        setTimeout(() => {
+        try {
+            const { login } = await import('@/utils/api');
+            const response = await login(formData.email, formData.password);
+            
             setLoading(false);
             setSuccess(true);
 
@@ -74,7 +71,10 @@ export default function LoginPage() {
             setTimeout(() => {
                 router.push('/');
             }, 1000);
-        }, 1500);
+        } catch (err) {
+            setLoading(false);
+            setError(err.message || 'Something went wrong. Please try again.');
+        }
     };
 
     return (
