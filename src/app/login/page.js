@@ -36,6 +36,7 @@ export default function LoginPage() {
     const [forgotEmail, setForgotEmail] = useState('');
     const [supportMsg, setSupportMsg] = useState('');
     const [error, setError] = useState('');
+    const [formErrors, setFormErrors] = useState({});
     const [success, setSuccess] = useState(false);
 
     const handleInputChange = (e) => {
@@ -46,14 +47,29 @@ export default function LoginPage() {
         }));
         // Clear error when user types
         if (error) setError('');
+        if (formErrors[name]) {
+            setFormErrors(prev => ({ ...prev, [name]: '' }));
+        }
     };
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        // Basic Validation
-        if (!formData.email || !formData.password) {
-            setError('Please enter both email and password.');
+        // Field Validation
+        const newFormErrors = {};
+        if (!formData.email) {
+            newFormErrors.email = "Please enter your email address.";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newFormErrors.email = "Please enter a valid email address.";
+        }
+
+        if (!formData.password) {
+            newFormErrors.password = "Please enter your password.";
+        }
+
+        setFormErrors(newFormErrors);
+
+        if (Object.keys(newFormErrors).length > 0) {
             return;
         }
 
@@ -63,7 +79,7 @@ export default function LoginPage() {
         try {
             const { login } = await import('@/utils/api');
             const response = await login(formData.email, formData.password);
-            
+
             setLoading(false);
             setSuccess(true);
 
@@ -119,14 +135,14 @@ export default function LoginPage() {
                             <input
                                 type="email"
                                 name="email"
-                                className={styles.inputField}
+                                className={`${styles.inputField} ${formErrors.email ? styles.inputError : ''}`}
                                 placeholder="name@company.com"
                                 value={formData.email}
                                 onChange={handleInputChange}
-                                required
                             />
                             <Mail size={18} className={styles.inputIcon} />
                         </div>
+                        {formErrors.email && <span className={styles.errorText}>{formErrors.email}</span>}
                     </div>
 
                     <div className={styles.formGroup}>
@@ -135,11 +151,10 @@ export default function LoginPage() {
                             <input
                                 type={showPassword ? "text" : "password"}
                                 name="password"
-                                className={styles.inputField}
+                                className={`${styles.inputField} ${formErrors.password ? styles.inputError : ''}`}
                                 placeholder="••••••••"
                                 value={formData.password}
                                 onChange={handleInputChange}
-                                required
                             />
                             <Lock size={18} className={styles.inputIcon} />
                             <button
@@ -150,6 +165,7 @@ export default function LoginPage() {
                                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                             </button>
                         </div>
+                        {formErrors.password && <span className={styles.errorText}>{formErrors.password}</span>}
                     </div>
 
                     <div className={styles.optionsRow}>
